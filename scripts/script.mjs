@@ -19,17 +19,17 @@ export function routeToCall(){
   switch(true) {
     /** Page loader - init variables **/
     case !utils.getGlobalVariable('appSettings'):
-      utils.loadSystemFile( 'appSettings', './appSettings.json' , routeToCall );
+      utils.loadSystemFile( 'appSettings', '../js.cms.setttings/appSettings.json' , routeToCall );
     break;
     /** Page loader - init variables **/
     case !utils.getGlobalVariable('translations'):
-      utils.loadSystemFile( 'translations', './translations.json' , translatePage );
+      utils.loadSystemFile( 'translations', '../js.cms.setttings/translations.json' , translatePage );
     break;
     case !utils.getGlobalVariable('gitApi'):
       doLogin(document.getElementById('content'));
     break;
     case !utils.getGlobalVariable('SEOFields'):
-      utils.loadSystemFile( 'SEOFields', './SEOFields.json' , routeToCall );
+      utils.loadSystemFile( 'SEOFields', '../js.cms.setttings/SEOFields.json' , routeToCall );
     break;
     case !loadSteps.messages: 
       utils.showMessage();
@@ -37,7 +37,7 @@ export function routeToCall(){
       routeToCall();
     break;
     case !utils.getGlobalVariable('contentTypes'):
-      utils.loadSystemFile( 'contentTypes', './contentTypes.json', function(){
+      utils.loadSystemFile( 'contentTypes', '../js.cms.setttings/contentTypes.json', function(){
         if( utils.getGlobalVariable('contentTypes').length > 0 ) {
           let contentTypesSingle = '(' + utils.getGlobalVariable('contentTypes').map(a=>a.name).join('|') +')';
           regexExpressions.itemManagment = new RegExp('#'+contentTypesSingle+'\\/([^\/]+)',"i");
