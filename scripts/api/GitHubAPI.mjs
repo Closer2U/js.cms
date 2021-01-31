@@ -5,9 +5,21 @@ export let getRepo = function() {
   let appSettings = utils.getGlobalVariable('appSettings');
  
   let octo = new Octokat({ 'token': loginParams.token });
-  // TODO: Read from app settings
+  if( !appSettings.API_Params[0] || !appSettings.API_Params[1] ) {
+    appSettings.API_Params = setGitHubRepoParams();
+    appSettings.needsUpdate = true;
+    utils.setLocalStorage( 'secret', appSettings);
+  }
   let repo = octo.repos(appSettings.API_Params[0], appSettings.API_Params[1]);
   return repo;
+}
+
+let setGitHubRepoParams = function() {
+  let matchs =  location.href.match("\/\/([^.]*).github.io\/([^\/]*)");
+  if ( matchs.length > 2 ) {
+    return [matchs[1],matchs[2]];
+  }
+  return [];
 }
 
 export let getApi = function(  ) {

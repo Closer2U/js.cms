@@ -22,7 +22,6 @@ export function contentItem ( contentType , ItemId ) {
   // TODO: Dynamic languages 
   this.en = {};
 
-  let appSettings = utils.getGlobalVariable('appSettings');
   let typeData = utils.getGlobalVariable('contentTypes').find ( ty => ty.name==contentType );
  
   /* when item is new - prevent from changing it's id to existing one */

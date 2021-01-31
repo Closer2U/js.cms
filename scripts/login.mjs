@@ -15,7 +15,6 @@ export function doLogin( parentComponent ) {
     let appSettings = utils.getGlobalVariable('appSettings');
     let apiClassName = appSettings['API_Gate'];
 
-
     // invoke API class
     import('./api/'+apiClassName+'.mjs')
       .then(api => {
