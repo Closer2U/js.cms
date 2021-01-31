@@ -173,7 +173,7 @@ export function contentItem ( contentType , ItemId ) {
             .then(result=> result.text())
             .then( baseTemplate => {
               // TODO: Support multiple menus
-              return APIconnect.getFile('/admin/menus/main.json')
+              return APIconnect.getFile('../js.cms.settings/menus/main.json')
                                 .then( menu => { return JSON.parse(menu) })
                                 .then( jsonMenu => {
                 return Promise.all( languages.map( language => {
