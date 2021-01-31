@@ -2,11 +2,12 @@ import * as utils from './utils.js';
 
 export let getRepo = function() {
   let loginParams = utils.getLocalStorage( 'secret');
+  let appSettings = utils.getGlobalVariable('appSettings');
+ 
   // Init API Object
-  let apiRefferance = this;
   let octo = new Octokat({ 'token': loginParams.token });
   // TODO: Read from app settings
-  let repo = octo.repos('arielberg', 'meshilut');
+  let repo = octo.repos(appSettings.API_Params);
   return repo;
 }
 
